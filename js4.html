@@ -1,0 +1,44 @@
+<html>
+    <head>
+
+    </head>
+    <body bgcolor="grey">
+        <script>
+           function klient(nazwisko_k, imie_k, zawod_k)
+           {
+               this.nazwisko = nazwisko_k;
+               this.imie = imie_k;
+               this.zawod = zawod_k;
+           }
+
+           klient.prototype.wypisz = function()
+           {
+               alert(this.nazwisko + " " + this.imie + " " + this.zawod);
+           };
+
+           //TWORZENIE OSÓB
+           var osoba1 = new klient("Kowalski", "Jan", "Kierowca");
+           var osoba2 = new klient("Nowak", "Dawid", "Handlarz");
+           var osoba3 = new klient("Nowy", "Marek", "Informatyk");
+           var osoba4 = new klient("Tak", "Kacper", "Budowlaniec");
+           var osoba5 = new klient("Nie", "Rafal", "Elektryk");
+
+           //WYPISYWANIE OSÓB
+           osoba1.wypisz();
+           osoba2.wypisz();
+           osoba3.wypisz();
+           osoba4.wypisz();
+           osoba5.wypisz();
+
+           //WŁAŚCIWOŚCI
+           document.write("Dostęp do właściwości" + "<br>");
+
+           document.write("klient pierwszy" + " "+osoba1.nazwisko+ " "+ osoba1.imie+ " " + osoba1.zawod + "<br>")
+           document.write("klient drugi" + " "+osoba2.nazwisko+ " "+ osoba2.imie+ " " + osoba2.zawod  + "<br>")
+           document.write("klient trzeci" + " "+osoba3.nazwisko+ " "+ osoba3.imie+ " " + osoba3.zawod + "<br>")
+           document.write("klient czwarty" + " "+osoba4.nazwisko+ " "+ osoba4.imie+ " " + osoba4.zawod + "<br>")
+           document.write("klient piąty" + " "+osoba5.nazwisko+ " "+ osoba5.imie+ " " + osoba5.zawod + "<br>")
+
+        </script>
+    </body>
+</html>

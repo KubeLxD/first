@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title>siema</title>
+        <meta charset = "utf-8"/>
+    </head>
+    <body bgcolor="grey">
+
+        <script>
+            function oblicz()
+            {
+                var l1 = parseInt(liczba1.value);
+                var l2 = parseInt(liczba2.value);
+                var l3 = l1 + l2;
+
+                document.getElementById("wynik").innerHTML = l3;
+            }
+        </script>
+
+       Liczba 1:  <input type="number" id="liczba1"/>
+       <br><br>
+       Liczba 2:  <input type="number" id="liczba2"/>
+
+       <input type="submit" value="Oblicz" onclick="oblicz()">
+       <div id="wynik"></div>
+    </body>
+</html>
