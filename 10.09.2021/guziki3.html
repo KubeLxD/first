@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Praca Praca</title>
+
+    <script>
+    
+
+            function silnia(m)
+            {
+              if(m<0){return m;}
+              
+              else
+              {
+                  for(i=0; i<=s; i++)
+                  {
+                      var wynik = m * m;
+                     m--;
+                  }
+              }
+
+              wynik1.innerHTML = silnia(wynik);
+
+            }
+        
+             
+            
+        
+    </script>
+
+
+
+    <script>
+
+        function fibb()
+        {
+
+            function fib(n)
+            {
+                if(n<2){return n;}
+                else
+                {
+                    return fib(n-1) + fib(n-2);
+                }
+            }
+
+            var w = prompt('Podaj liczbę fib: ');
+                if(w<=0)
+                {
+                    alert("Podaj dobra wartosc");
+                }
+            
+                else
+                {
+                    for( var i=1; i<=w; i++)
+                    {
+                        wynik2.innerHTML = (fib(i));
+                    }
+                }
+        }
+    </script>
+
+    
+
+    <script>
+
+        function los()
+        {
+           var losowanie = Math.floor((Math.random()*1000)+1);
+            wynik3.innerHTML = losowanie;
+        }
+    </script>
+    
+</head>
+<body bgcolor="grey">
+
+    <input type="submit" value="silnia" onclick="ss()"/>
+    <input type="submit" value="fib" onclick="fibb()"/>
+    <input type="submit" value="los" onclick="los()"/>
+
+    <div id="wynik1"></div>
+    <div id="wynik2"></div>
+    <div id="wynik3"></div>
+</body>
+</html>
