@@ -7,80 +7,69 @@
     <script>
     
 
-            function silnia(m)
+            function silnia(n)
             {
-              if(m<0){return m;}
-              
-              else
-              {
-                  for(i=0; i<=s; i++)
-                  {
-                      var wynik = m * m;
-                     m--;
-                  }
-              }
-
-              wynik1.innerHTML = silnia(wynik);
-
+                if(n==0)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return silnia(n-1)*n;
+                }
+                
             }
         
-             
-            
-        
+            function wynik()
+            {
+                var n = prompt("Podaj silnie: ");
+                wynik1.innerHTML = silnia(n);
+            }
     </script>
 
 
 
     <script>
-
-        function fibb()
-        {
-
-            function fib(n)
+            function fib(m)
             {
-                if(n<2){return n;}
+                if(m<=2)
+                {
+                    return 1;
+                }
                 else
                 {
-                    return fib(n-1) + fib(n-2);
+                    return fib(m-1) + fib(m-2);
                 }
             }
-
-            var w = prompt('Podaj liczbę fib: ');
-                if(w<=0)
-                {
-                    alert("Podaj dobra wartosc");
-                }
-            
-                else
-                {
-                    for( var i=1; i<=w; i++)
-                    {
-                        wynik2.innerHTML = (fib(i));
-                    }
-                }
-        }
+        
+     function wynik1()
+            {
+                var m = prompt("Podaj liczbę fib: ");
+				for(i=1; i<=m; i++)
+				{
+					document.write(fib(i) + "<br>");
+				}
+            }
+     
     </script>
 
     
-
     <script>
 
         function los()
         {
-           var losowanie = Math.floor((Math.random()*1000)+1);
-            wynik3.innerHTML = losowanie;
+           var losowanie = Math.floor((Math.random()*100)+1);
+            wynik2.innerHTML = losowanie;
         }
     </script>
     
 </head>
 <body bgcolor="grey">
 
-    <input type="submit" value="silnia" onclick="ss()"/>
-    <input type="submit" value="fib" onclick="fibb()"/>
+    <input type="submit" value="silnia" onclick="wynik()"/>
     <input type="submit" value="los" onclick="los()"/>
 
     <div id="wynik1"></div>
     <div id="wynik2"></div>
-    <div id="wynik3"></div>
 </body>
 </html>
