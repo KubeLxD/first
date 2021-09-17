@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SIEMA</title>
+    <meta charset="utf-8"/>
+
+</head>
+
+<body bgcolor="gray">
+
+    <script>
+        
+        function pole(a,b,h)
+        {
+            var a_licz = parseFloat(a);
+            var b_licz = parseFloat(b);
+            var h_licz = parseFloat(h);
+
+            var p =  ((a_licz + b_licz) * h_licz) / 2;
+
+            pokaz1.innerHTML = "Pole trapzezu równoramiennego: " + p;
+
+        }
+
+
+        function obw(a,b,h)
+        {
+            var a_licz = parseFloat(a);
+            var b_licz = parseFloat(b);
+            var h_licz = parseFloat(h);
+
+            var c = Math.pow(h_licz  + (a_licz - b_licz)/2,2);   
+            var c1 = Math.sqrt(c);
+
+            var d = Math.pow(h_licz  + (a_licz - b_licz)/2,2);  
+            var d1 = Math.sqrt(c);
+
+            var ob = a_licz + b_licz + c1 + d1;
+
+            pokaz2.innerHTML = "obwód trapzezu równoramiennego: " + ob;
+
+        }
+     
+
+    </script>
+
+    <h1>Prostokąt</h1>
+
+    <form name ="formularz" onsubmit="pole(this.liczba1.value, this.liczba2.value, this.liczba3.value); obw(this.liczba1.value, this.liczba2.value, this.liczba3.value);return false">
+        Podaj a: <input type="number" name="liczba1"/><br><br>
+        Podaj b: <input type="number" name="liczba2"/><br><br>        
+        Podaj h: <input type="number" name="liczba3"/><br><br>        
+
+
+        <input type="submit" value = "oblicz"/>
+
+        <table>
+            <tr id="pokaz1"></tr>
+            <tr id="pokaz2"></tr>
+        </table>
+    </form>
+</body>
+</html>
