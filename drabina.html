@@ -10,12 +10,21 @@
 
     <script>
         
-     
-     
+     function drab(d,x)
+     {
+        var d_licz = parseFloat(d);
+        var x_licz = parseFloat(x);
+
+        var pit = Math.pow(d_licz,2) + Math.pow(x_licz,2);
+        var pit1 = Math.sqrt(pit);
+
+        document.getElementsByName('drabina')[0].value = pit1;
+
+     }
 
     </script>
 
-    <form name ="formularz" onsubmit="pole(this.liczba1.value, this.liczba2.value); return false">
+    <form name ="formularz" onsubmit="drab(this.liczba1.value, this.liczba2.value); return false">
 
         <h1>Podaj odleglosc od drabiny i kat</h1><br><br>
 
@@ -25,13 +34,7 @@
 
         <input type="submit" value = "oblicz"/><br><br>
 
-        Drabina: <input type="number" name="drabina" /><br><br>
-        Alfa: <input type="number" name="alfa" /><br><br>   
-
-        <table>
-            <tr id="pokaz1"></tr>
-            <tr id="pokaz2"></tr>
-        </table>
+        Drabina: <input size='6' name="drabina" /><br><br>
     </form>
 </body>
 </html>
