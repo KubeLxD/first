@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+
+<body>
+    <header>
+        <h1>DZIEŁA SZTUKI</h1>
+    </header>
+
+    <main>
+        <article>
+            <div class="blok">
+                <h2> Moneta i Kostka</h2>
+                <textarea rows=39 cols=106>
+                    <!DOCTYPE html>
+<html>
+<head>
+    
+</head>
+
+<body bgcolor = "grey">
+<?php
+
+    $reszka = 0;
+    $orzel = 0;
+
+           for($i=0; $i<100; $i++)
+           {
+               $los_gaffke = rand(1,2);
+               if($los_gaffke==1)
+               {
+                   $reszka++;
+               }
+
+               else
+               {
+                   $orzel++;
+               }
+           }
+
+           echo ("Reszka: $reszka");
+           echo("<br>");
+           echo ("Orzel: $orzel");
+
+           if($reszka==$orzel)
+           {
+               echo("<br> Remis! <br><br>");
+           }
+           
+           elseif($reszka>$orzel)
+           {
+            echo("<br> Reszka wygrywa!<br><br>");
+           }
+
+           else
+           {
+            echo("<br> Orzel wygrywa! <br><br>");
+           }
+           
+
+           echo("RZUT KOSTKA <br><br>");
+           $kostka_gaffke = rand(1,6);
+
+           switch($kostka_gaffke)
+           {
+               case 1:
+                echo("Wypadło 1");
+                break;
+
+                case 2:
+                echo("Wypadło 2");
+                break;
+
+                case 3:
+                echo("Wypadło 3");
+                break;
+
+                case 4:
+                echo("Wypadło 4");
+                break;
+
+                case 5:
+                echo("Wypadło 5");
+                break;
+
+                case 6:
+                echo("Wypadło 6");
+                break;
+           }
+?>
+
+</body>
+</html>
+                </textarea>
+            </div>
+            <div class="blok">
+                <h2>Baza Danych</h2>
+                <textarea rows=39 cols=106>
+                    <!DOCTYPE html>
+<html>
+<head>
+
+</head>
+
+<body bgcolor = "grey">
+       <form method="GET">
+
+       <strong>DODAWANIE</strong> <br><br>
+
+           ID: <input type="number" name="id"/> 
+           Imie: <input type="text" name="im"/>
+            Nazwisko:<input type="text" name="naz"/>
+           Srednia:  <input type="number" name="sr"/>
+            <input type="submit" value="Dodaj" name="guzik"/><br><br><br>
+
+
+         <strong>USUWANIE</strong> <br><br>
+
+            ID do usuniecia:  <input type="number" name="id1"/>
+            <input type="submit" value="Usun" name="usun"/><br><br><br>
+
+
+        <strong>UPDATE</strong> <br><br>
+
+            ID: <input type="number" name="id2"/> 
+           Imie: <input type="text" name="im1"/>
+            Nazwisko:<input type="text" name="naz1"/>
+           Srednia:  <input type="number" name="sr1"/>
+            <input type="submit" value="Update" name="up"/><br><br><br>
+        </form>
+
+<?php
+
+    $host = "localhost";
+    $name_db = "root";
+    $pass_db = "";
+    $db = "4k";
+
+    $con = mysqli_connect($host, $name_db, $pass_db, $db);
+    mysqli_select_db($con, $db);
+
+
+    //DODAWANIE
+
+    if(isset($_GET['guzik']))
+    {
+
+        $id = $_GET['id'];
+        $imie = $_GET['im'];
+        $nazwisko = $_GET['naz'];
+        $srednia = $_GET['sr'];
+
+        $query = "SELECT * FROM uczen";
+        $query1 = "Insert into uczen(id, imie, nazwisko, srednia) values('$id', '$imie', '$nazwisko', '$srednia')";
+        $run1 = mysqli_query($con,$query1) or die (mysqli_error());
+        $run = mysqli_query($con,$query) or die (mysqli_error());
+
+        if($run)
+        {
+            echo "<p>";
+            echo "<table border=\"1\"><tr>";
+            echo "<td><strong>ID</strong></td>";
+            echo "<td><strong>Imie</strong></td>";
+            echo "<td><strong>Nazwisko</strong></td>";
+            echo "<td><strong>Srednia</strong></td>";
+            echo "</tr>";
+
+            while($row=mysqli_fetch_row($run))
+            {
+                echo "</tr>";
+                echo "<td bgcolor=\"red\">" . $row[0] . "</td>";
+                echo "<td bgcolor=\"red\">" . $row[1] . "</td>";
+                echo "<td bgcolor=\"red\">" . $row[2] . "</td>";
+                echo "<td bgcolor=\"red\">" . $row[3] . "</td>";
+                echo "</tr>";
+            }
+
+            echo "</table>";
+        }
+    }
+
+    //USUWANIE
+
+    if(isset($_GET['usun']))
+    {
+        $id1 = $_GET['id1'];
+        $query2 = "DELETE FROM uczen WHERE id = $id1";
+        $query3 = "SELECT * FROM uczen";
+        $run2 = mysqli_query($con,$query2) or die(mysqli_error());
+        $run3 = mysqli_query($con,$query3) or die(mysqli_error());
+
+        if($run3)
+        {
+            echo "<p>";
+            echo "<table border=\"1\"><tr>";
+            echo "<td><strong>ID</strong></td>";
+            echo "<td><strong>Imie</strong></td>";
+            echo "<td><strong>Nazwisko</strong></td>";
+            echo "<td><strong>Srednia</strong></td>";
+            echo "</tr>";
+
+            while($row=mysqli_fetch_row($run3))
+            {
+                echo "</tr>";
+                echo "<td bgcolor=\"red\">" . $row[0] . "</td>";
+                echo "<td bgcolor=\"red\">" . $row[1] . "</td>";
+                echo "<td bgcolor=\"red\">" . $row[2] . "</td>";
+                echo "<td bgcolor=\"red\">" . $row[3] . "</td>";
+                echo "</tr>";
+            }
+
+            echo "</table>";
+        }
+    }
+
+
+    //MODYFIKACJA
+
+    if(isset($_GET['up']))
+    {
+        $id2 = $_GET['id2'];
+        $imie1 = $_GET['im1'];
+        $nazwisko1 = $_GET['naz1'];
+        $srednia1 = $_GET['sr1'];
+
+        $query4 = "UPDATE uczen SET imie = '$imie1', nazwisko = '$nazwisko1', srednia = '$srednia1' WHERE id = $id2";
+        $query5 = "SELECT * FROM uczen";
+
+        $run4 = mysqli_query($con,$query4) or die(mysqli_error());
+        $run5 = mysqli_query($con,$query5) or die(mysqli_error());
+
+        if($run5)
+        {
+            echo "<p>";
+            echo "<table border=\"1\"><tr>";
+            echo "<td><strong>ID</strong></td>";
+            echo "<td><strong>Imie</strong></td>";
+            echo "<td><strong>Nazwisko</strong></td>";
+            echo "<td><strong>Srednia</strong></td>";
+            echo "</tr>";
+
+            while($row=mysqli_fetch_row($run5))
+            {
+                echo "</tr>";
+                echo "<td bgcolor=\"red\">" . $row[0] . "</td>";
+                echo "<td bgcolor=\"red\">" . $row[1] . "</td>";
+                echo "<td bgcolor=\"red\">" . $row[2] . "</td>";
+                echo "<td bgcolor=\"red\">" . $row[3] . "</td>";
+                echo "</tr>";
+            }
+
+            echo "</table>";
+        }
+    }
+
+?>
+</body>
+</html>
+                </textarea>
+            </div>
+        </article>
+    </main>
+
+    <style>
+        body{background-color:midnightblue;}
+        header{
+            width: 500px;
+            height: 200px;
+            color:rgb(97, 230, 97);
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            padding-top: 30px;
+            display: flex;
+            font-size: 30px;
+        }
+
+        .blok{
+            float: left;
+            width: 800px;
+            height: 600px;
+            margin: 65px;
+            margin-top: 10px;;
+            background-color:midnightblue;;
+        }
+        textarea{
+            background-color:black;
+            color:rgb(228, 225, 225); 
+            resize: none;
+            overflow: hidden;
+            border: solid 5px rgb(97, 230, 97);
+            border-radius: 30px;
+        }
+
+        h2
+        {
+            text-align: center;
+            color:rgb(97, 230, 97);
+        }
+    </style>
+</body>
+</html>
