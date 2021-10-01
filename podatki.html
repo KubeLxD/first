@@ -1,0 +1,138 @@
+<!DOCTYPE HTML>
+<html>
+<head> 
+
+    <script>
+        function oblicz()
+        {   
+            var kasa = parseFloat(l1.value);
+            var kasa2 = 0;
+            var kasa3 = 0;
+            var wybor1 = wybor.value;
+
+            switch(wybor1)
+            {
+                case 'pl':
+                    kasa2=kasa * 0.19;
+                    wynik.innerHTML = "Podatek :" + kasa2 + " zł";
+                    kasa3 = kasa - kasa2;
+                    wynik2.innerHTML = "Konto: " + kasa3 + " zł";
+                break;
+
+                case 'pp':
+                    if(kasa<85350)
+                    {
+                        kasa2=kasa * 0.17;
+                        kasa3 = kasa - kasa2;
+                    }
+                    else
+                    {
+                        kasa2=kasa*0.32;
+                        kasa3 = kasa - kasa2;   
+                    }
+                    wynik.innerHTML = "Podatek :" + kasa2 + " zł";
+                    wynik2.innerHTML = "Konto: " + kasa3 + " zł";
+                break;
+            }
+        }
+    </script>
+
+    <script>
+
+        function oblicz2()
+        {
+
+            var kasa = parseFloat(l1.value);
+            var kasa2 = 0;
+            var kasa3 = 0;
+            var wybor2 = wybor1.value;
+
+            switch(wybor2)
+            {
+                case 'wolne':
+                    kasa2=kasa * 0.17;
+                    wynik.innerHTML = "Podatek :" + kasa2 + " zł";
+                    kasa3 = kasa - kasa2;
+                    wynik2.innerHTML = "Konto: " + kasa3 + " zł";
+                break;
+
+                case 'pro':
+                    kasa2=kasa * 0.15;
+                    wynik.innerHTML = "Podatek :" + kasa2 + " zł";
+                    wynik2.innerHTML = "Konto: " + kasa3 + " zł";
+                break;
+
+                case 'op':
+                    kasa2=kasa * 0.125;
+                    wynik.innerHTML ="Podatek :" +  kasa2 + " zł";
+                    wynik2.innerHTML = "Konto: " + kasa3 + " zł";
+                break;
+
+                case 'pry':
+                    kasa2=kasa * 0.085;
+                    wynik.innerHTML = "Podatek :" + kasa2 + " zł";
+                    kasa3 = kasa - kasa2;
+                    wynik2.innerHTML = "Konto: " + kasa3 + " zł";
+                break;
+
+                case 'robot':
+                    kasa2=kasa * 0.055;
+                    wynik.innerHTML = "Podatek :" + kasa2 + " zł";
+                    kasa3 = kasa - kasa2;
+                    wynik2.innerHTML = "Konto: " +kasa3 + " zł";
+                break;
+
+                case 'us':
+                    kasa2=kasa * 0.3;
+                    wynik.innerHTML = "Podatek :" + kasa2 + " zł";
+                    kasa3 = kasa - kasa2;
+                    wynik2.innerHTML = "Konto: " + kasa3 + " zł";
+                break;
+
+                case 'pz':
+                    kasa2=kasa * 0.2;
+                    wynik.innerHTML = "Podatek :" + kasa2 + " zł";
+                    kasa3 = kasa - kasa2;
+                    wynik2.innerHTML = "Konto: " + kasa3 + " zł";
+                break;
+
+                case 'sp':
+                    kasa2=kasa * 0.10;
+                    wynik.innerHTML = "Podatek :" + kasa2 + " zł";
+                    kasa3 = kasa - kasa2;
+                    wynik2.innerHTML = "Konto: " + kasa3 + " zł";
+                break;
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+    Przychody<input type="number" id="l1"/><br><br>
+    Podatki<select id="wybor">
+        <option value="pl">Podatek liniowy</option>
+        <option value="pp">Podatek progresowy</option>
+    </select>
+
+    <input type="submit" value="Opodatkuj" onclick="oblicz()"/><br>
+
+    Ryczał<select id="wybor1">
+        <option value="wolne">Wolne zawody</option>
+        <option value="pro">programista</option>
+        <option value="pry">prywatny do kowty 100.000zł</option>
+        <option value="op">Opodatkowane</option>
+        <option value="robot">Roboty budowlane</option>
+        <option value="us">uslugi w zakresie handlu</option>
+        <option value="pz">przychody ze sprzedazy</option>
+        <option value="sp">sprzedaz ST i wyposażenia</option>    
+    </select>
+
+    <input type="submit" value="Opodatkuj" onclick="oblicz2()"/><br>
+
+    <table border="1">
+        <tr id="wynik"></tr>
+        <tr id="wynik2"></tr>
+    </table>
+</body>
+</html>
